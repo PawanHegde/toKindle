@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.pawanhegde.tokindle.home.HomeFragment"
+        android:label="home"
+        tools:layout="@layout/home">
+
+        <action
+            android:id="@+id/action_homeFragment_to_homeBottomSheetFragment"
+            app:destination="@id/homeBottomSheetFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_urlDialog"
+            app:destination="@id/urlDialog" />
+        <action
+            android:id="@+id/action_homeFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.pawanhegde.tokindle.settings.SettingsFragment"
+        android:label="settings"
+        tools:layout="@layout/settings">
+        <action
+            android:id="@+id/action_settingsFragment_to_settingsBottomSheetFragment"
+            app:destination="@id/settingsBottomSheetFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_emailDialog"
+            app:destination="@id/emailDialog" />
+        <action
+            android:id="@+id/action_settingsFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/homeBottomSheetFragment"
+        android:name="com.pawanhegde.tokindle.home.HomeBottomSheetFragment"
+        android:label="home_bottom_sheet"
+        tools:layout="@layout/home_bottom_sheet">
+        <argument
+            android:name="selectedDocumentId"
+            app:argType="string" />
+        <argument
+            android:name="status"
+            app:argType="com.pawanhegde.tokindle.model.DocumentUiStatus" />
+        <action
+            android:id="@+id/action_homeBottomSheetFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+
+    </dialog>
+    <dialog
+        android:id="@+id/settingsBottomSheetFragment"
+        android:name="com.pawanhegde.tokindle.settings.SettingsBottomSheetFragment"
+        android:label="settings_bottom_sheet"
+        tools:layout="@layout/settings_bottom_sheet">
+        <argument
+            android:name="emailId"
+            app:argType="string" />
+    </dialog>
+    <dialog
+        android:id="@+id/urlDialog"
+        android:name="com.pawanhegde.tokindle.home.UrlDialog"
+        android:label="dialog_url"
+        tools:layout="@layout/url_dialog" />
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.pawanhegde.tokindle.help.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/help" />
+    <dialog
+        android:id="@+id/emailDialog"
+        android:name="com.pawanhegde.tokindle.settings.EmailDialog"
+        android:label="email_dialog"
+        tools:layout="@layout/email_dialog" />
+</navigation>

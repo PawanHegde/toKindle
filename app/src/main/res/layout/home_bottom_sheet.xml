@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/BottomSheet"
+    android:theme="@style/ShapeAppearance.ToKindle.LargeComponent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".home.HomeBottomSheetFragment">
+
+    <TextView
+        android:id="@+id/home_bottom_sheet_header"
+        style="@style/BottomSheetHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_bottom_sheet_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/home_bottom_sheet_option" />
+</LinearLayout>
