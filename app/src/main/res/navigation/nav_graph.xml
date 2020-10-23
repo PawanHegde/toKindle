@@ -18,8 +18,8 @@
             android:id="@+id/action_homeFragment_to_urlDialog"
             app:destination="@id/urlDialog" />
         <action
-            android:id="@+id/action_homeFragment_to_helpFragment"
-            app:destination="@id/helpFragment" />
+            android:id="@+id/action_homeFragment_to_supportFragment"
+            app:destination="@id/supportFragment" />
         <action
             android:id="@+id/action_homeFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -36,8 +36,8 @@
             android:id="@+id/action_settingsFragment_to_emailDialog"
             app:destination="@id/emailDialog" />
         <action
-            android:id="@+id/action_settingsFragment_to_helpFragment"
-            app:destination="@id/helpFragment" />
+            android:id="@+id/action_settingsFragment_to_usageGuideFragment"
+            app:destination="@id/usageGuideFragment" />
     </fragment>
     <dialog
         android:id="@+id/homeBottomSheetFragment"
@@ -70,13 +70,22 @@
         android:label="dialog_url"
         tools:layout="@layout/url_dialog" />
     <fragment
-        android:id="@+id/helpFragment"
-        android:name="com.pawanhegde.tokindle.help.HelpFragment"
-        android:label="fragment_help"
-        tools:layout="@layout/help" />
+        android:id="@+id/supportFragment"
+        android:name="com.pawanhegde.tokindle.support.SupportFragment"
+        android:label="fragment_support"
+        tools:layout="@layout/support" >
+        <action
+            android:id="@+id/action_supportFragment_to_usageGuideFragment"
+            app:destination="@id/usageGuideFragment" />
+    </fragment>
     <dialog
         android:id="@+id/emailDialog"
         android:name="com.pawanhegde.tokindle.settings.EmailDialog"
         android:label="email_dialog"
         tools:layout="@layout/email_dialog" />
+    <fragment
+        android:id="@+id/usageGuideFragment"
+        android:name="com.pawanhegde.tokindle.guide.UsageGuideFragment"
+        android:label="fragment_usage_guide"
+        tools:layout="@layout/fragment_usage_guide" />
 </navigation>

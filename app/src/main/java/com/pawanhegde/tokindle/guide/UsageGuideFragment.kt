@@ -1,21 +1,36 @@
-package com.pawanhegde.tokindle.help
+package com.pawanhegde.tokindle.guide
 
 import android.content.res.Configuration
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebSettings
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewClientCompat
 import androidx.webkit.WebViewFeature
-import com.pawanhegde.tokindle.databinding.HelpBinding
+import com.pawanhegde.tokindle.databinding.FragmentUsageGuideBinding
 
-class HelpFragment : Fragment() {
-    private lateinit var binding: HelpBinding
+class UsageGuideFragment : Fragment() {
+    private lateinit var binding: FragmentUsageGuideBinding
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentUsageGuideBinding.inflate(inflater, container, false)
+
+        binding.webview.apply {
+            settings.cacheMode = android.webkit.WebSettings.LOAD_DEFAULT
+            setBackgroundColor(android.graphics.Color.TRANSPARENT)
+            webViewClient = WebViewClientCompat()
+            loadUrl("https://pawanhegde.github.io/toKindle/usage-guide")
+        }
+
+        return binding.root
+
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,24 +48,6 @@ class HelpFragment : Fragment() {
                     WebSettingsCompat.FORCE_DARK_ON
                 )
             }
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = HelpBinding.inflate(layoutInflater, container, false)
-        with(binding) {
-            close.setOnClickListener { findNavController().popBackStack() }
-            webview.apply {
-                settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
-                setBackgroundColor(Color.TRANSPARENT)
-                webViewClient = WebViewClientCompat()
-                loadUrl("https://pawanhegde.github.io/toKindle/usage-guide")
-            }
-
-            return root
         }
     }
 }

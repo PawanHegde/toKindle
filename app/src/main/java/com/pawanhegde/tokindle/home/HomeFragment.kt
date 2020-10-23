@@ -64,7 +64,7 @@ class HomeFragment : Fragment() {
             initialiseFab(speedDial)
             optionHelp.setOnClickListener {
                 val openHelp =
-                    com.pawanhegde.tokindle.home.HomeFragmentDirections.actionHomeFragmentToHelpFragment()
+                    com.pawanhegde.tokindle.home.HomeFragmentDirections.actionHomeFragmentToSupportFragment()
                 findNavController().navigate(openHelp)
             }
             optionSettings.setOnClickListener {

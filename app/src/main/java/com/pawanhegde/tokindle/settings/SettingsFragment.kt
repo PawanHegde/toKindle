@@ -1,7 +1,12 @@
 package com.pawanhegde.tokindle.settings
 
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
 import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -43,7 +48,29 @@ class SettingsFragment : Fragment() {
             binding.noEmails.apply {
                 visibility = if (binding.emailsRecycler.visibility == GONE) VISIBLE else GONE
                 movementMethod = LinkMovementMethod.getInstance()
+                text = SpannableString(getString(R.string.no_emails)).apply {
+                    setSpan(
+                        object : ClickableSpan() {
+                            override fun onClick(widget: View) {
+                                val action =
+                                    SettingsFragmentDirections.actionSettingsFragmentToUsageGuideFragment()
+                                findNavController().navigate(action)
+                            }
+                        },
+                        107,
+                        117,
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+
+                    setSpan(
+                        StyleSpan(Typeface.BOLD_ITALIC),
+                        40,
+                        76,
+                        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+                    )
+                }
             }
+
         }
 
         binding.addEmail.setOnClickListener {

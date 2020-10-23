@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".help.HelpFragment">
+    tools:context=".support.SupportFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:liftOnScroll="true"
-        app:elevation="0dp">
+        app:elevation="0dp"
+        app:liftOnScroll="true">
 
         <com.google.android.material.appbar.MaterialToolbar
             style="@style/ToolbarStyle"
@@ -45,10 +45,29 @@
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <WebView
-            android:id="@+id/webview"
-            style="@style/HelpWebView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/usage_guide"
+                style="@style/Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/usage_guide"
+                android:textAppearance="@style/CardTitle"
+                app:drawableStartCompat="@drawable/ic_outline_help_center_24" />
+
+            <TextView
+                android:id="@+id/feedback"
+                style="@style/Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/send_feedback"
+                android:textAppearance="@style/CardTitle"
+                app:drawableStartCompat="@drawable/ic_outline_feedback_24" />
+
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

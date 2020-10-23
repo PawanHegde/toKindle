@@ -78,8 +78,4 @@
     <style name="Widget.ToKindle.Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textColor">?attr/colorPrimary</item>
     </style>
-
-    <style name="HelpWebView">
-
-    </style>
 </resources>

@@ -24,8 +24,7 @@
     <string name="empty_folder">Empty folder</string>
     <string name="no_documents_title">No documents</string>
     <string name="no_documents_subtext">Share files or webpages with the app and they will show up here</string>
-    <string name="learn_more">Learn more</string>
-    <string name="no_emails">Add your <b>Kindle email id</b>. It looks like <i>unique_id_for_your_device</i>@kindle.com.\nDon\'t know where to find it? <a href="https://tokindle.pawanhegde.com/help/find_kindle_id">Learn More</a></string>
+    <string name="no_emails">Add your <b>Kindle email id</b>. It looks like <i>unique_id_for_your_device</i>@kindle.com.\nDon\'t know where to find it? Learn more.</string>
     <string name="send_to_unknown">Send to …</string>
     <string name="add_first_email">Add at least one Kindle email id and then try sending again</string>
     <string name="done">Done</string>
@@ -39,4 +38,6 @@
     <string name="saving_locally">Saving locally</string>
     <string name="no_activity_for_preview">No activity found that can preview this type of file</string>
     <string name="content_non_fetchable">The source app doesn\'t allow refetching</string>
+    <string name="send_feedback">Send feedback</string>
+    <string name="usage_guide">Usage guide</string>
 </resources>
