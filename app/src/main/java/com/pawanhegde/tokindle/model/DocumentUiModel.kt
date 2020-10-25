@@ -1,5 +1,7 @@
 package com.pawanhegde.tokindle.model
 
+import androidx.annotation.Keep
+
 data class DocumentUiModel(
     val id: String,
     val displayName: String,
@@ -35,6 +37,7 @@ data class DocumentUiModel(
     }
 }
 
+@Keep
 enum class DocumentUiStatus {
     AVAILABLE,
     MISSING,
