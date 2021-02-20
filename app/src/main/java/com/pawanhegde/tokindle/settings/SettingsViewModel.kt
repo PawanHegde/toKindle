@@ -1,16 +1,18 @@
 package com.pawanhegde.tokindle.settings
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.pawanhegde.tokindle.data.EmailRepository
 import com.pawanhegde.tokindle.model.EmailUiModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SettingsViewModel @ViewModelInject constructor(
+@HiltViewModel
+class SettingsViewModel @Inject constructor(
     private val emailRepository: EmailRepository
 ) : ViewModel() {
     val emails: LiveData<List<EmailUiModel>> =

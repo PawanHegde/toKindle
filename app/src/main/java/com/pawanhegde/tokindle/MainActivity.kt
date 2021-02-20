@@ -7,21 +7,21 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.webkit.URLUtil
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.pawanhegde.tokindle.databinding.ActivityMainBinding
 import com.pawanhegde.tokindle.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-    private lateinit var homeViewModel: HomeViewModel
+    private val homeViewModel: HomeViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+//        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         setContentView(binding.root)
 
         when (intent?.action) {

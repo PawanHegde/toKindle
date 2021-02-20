@@ -4,7 +4,6 @@ import android.content.Context
 import android.net.Uri
 import android.webkit.URLUtil
 import androidx.annotation.VisibleForTesting
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.pawanhegde.tokindle.R
 import com.pawanhegde.tokindle.data.DocumentRepository
@@ -13,17 +12,22 @@ import com.pawanhegde.tokindle.model.Document
 import com.pawanhegde.tokindle.model.DocumentUiModel
 import com.pawanhegde.tokindle.model.DocumentUiStatus
 import com.pawanhegde.tokindle.model.DownloadStatus
+import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import kotlin.math.roundToInt
 import kotlin.time.Duration
 import kotlin.time.DurationUnit
 import kotlin.time.ExperimentalTime
 import kotlin.time.toDuration
 
-class HomeViewModel @ViewModelInject constructor(
+@HiltViewModel
+class HomeViewModel @Inject constructor(
     private val documentRepository: DocumentRepository,
     emailRepository: EmailRepository,
     @ApplicationContext private val context: Context
@@ -77,8 +81,10 @@ class HomeViewModel @ViewModelInject constructor(
         viewModelScope.launch { documentRepository.add(uri) }
     }
 
-    fun deleteDocument(id: String) {
-        viewModelScope.launch { documentRepository.deleteDocument(id) }
+    fun deleteDocument(id: String, waitForMilliseconds: Int): Job {
+        return viewModelScope.launch {
+            delay(waitForMilliseconds.toLong())
+            documentRepository.deleteDocument(id) }
     }
 
     fun getDocument(id: String): LiveData<Document> {

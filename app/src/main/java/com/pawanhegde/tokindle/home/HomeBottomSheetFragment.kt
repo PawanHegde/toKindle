@@ -48,8 +48,15 @@ class HomeBottomSheetFragment : BottomSheetDialogFragment() {
             getString(R.string.delete),
             ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_delete_24)
         ) {
-            homeViewModel.deleteDocument(document.id)
             dismiss()
+            val undoDuration = 4000
+            val deleteJob = homeViewModel.deleteDocument(document.id, undoDuration)
+            val undoSnackbar =
+                Snackbar.make(requireView(), "Deleting ${document.displayName}", undoDuration)
+                    .setAction("Undo") {
+                        deleteJob.cancel()
+                    }
+            undoSnackbar.show()
         }
     }
 
@@ -161,7 +168,7 @@ class HomeBottomSheetFragment : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         homeViewModel = ViewModelProvider(requireActivity()).get(HomeViewModel::class.java)
 
         with(HomeBottomSheetBinding.inflate(inflater, container, false)) {
